@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface User {
   id: number;
@@ -8,6 +8,16 @@ interface User {
 function App() {
   const [count, setCount] = useState<number>();
   const [users, setUsers] = useState<User[] | null>(null);
+
+  useEffect(() => {
+    console.log("mounting");
+    console.log("users :", users);
+
+    return () => {
+      console.log("unmounting");
+    };
+  }, [users]);
+
   return (
     <>
       <div>
